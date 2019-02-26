@@ -24,34 +24,35 @@ function Font(name, chars) {
     });
 
     this.alphabet = alphabet;
-    /**
-     * Function to convert a String using this font
-     * @param {String} text the text that should get renderd
-     */
-    this.render = function(text) {
-        var output = "";
-        for (var i = 0; i < text.length; i++) {
-            output += alphabet.get(text.charAt(i));
-            output += " ";
-        }
-        return output;
-    };
-
-    /**
-     * function to render text and use it as a parameter for a function
-     * @param {String} text the text that should get renderd
-     * @param {Function} to a function that should use the renderd text
-     */
-    this.write = function(text, to) {
-        if (typeof to !== "function") {
-            console.log(this.render(text));
-        } else {
-            to(this.render(text));
-        }
-    };
 
     return this;
 }
+
+/**
+ * function to render text and use it as a parameter for a function
+ * @param {String} text the text that should get renderd
+ * @param {Function} to a function that should use the renderd text
+ */
+Font.prototype.write = function(text, to) {
+    if (typeof to !== "function") {
+        console.log(this.render(text));
+    } else {
+        to(this.render(text));
+    }
+};
+
+/**
+ * Function to convert a String using this font
+ * @param {String} text the text that should get renderd
+ */
+Font.prototype.render = function(text) {
+    var output = "";
+    for (var i = 0; i < text.length; i++) {
+        output += this.alphabet.get(text.charAt(i));
+        output += " ";
+    }
+    return output;
+};
 
 /**
  * converts a string into an array
