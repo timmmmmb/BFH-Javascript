@@ -75,6 +75,16 @@ var alphabetString =
 "m=--;n=-.;o=---;p=.---.;q=--.-;r=.-.;s=...;t=-;u=..-;v=...-;w=.--;x=-..-;" +
 "y=-.-;z=--..; =//;.=.-.-.-;,=--..--;?=..--..;!=-.-.--";
 // create the morsefont
-let morse = new Font("MorseFont",createFontArray(alphabetString));
+let morseFont = new Font("MorseFont",createFontArray(alphabetString));
 // convert some text
-morse.write("hello","");
+morseFont.write("hello","");
+// override the render function
+morseFont.render = function(text){
+    var output = "";
+    for (var i = 0; i < text.length; i++) {
+        output += this.alphabet.get(text.charAt(i));
+        output += "/";
+    }
+    return output;
+}
+morseFont.write("hello","");
