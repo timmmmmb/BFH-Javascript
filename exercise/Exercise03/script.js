@@ -80,11 +80,11 @@ function Font(name, chars, lineHeight) {
 Font.prototype.write = function(text, to) {
     if (typeof to !== "function") {
         for(var j = 0; j<this.lineHeight; j++){
-            console.log(this.render(text));
+            console.log(this.render(text)[j]);
         }
     } else {
         for(var j = 0; j<this.lineHeight; j++){ 
-            to(this.render(text));
+            to(this.render(text)[j]);
         }
     }
 };
@@ -95,7 +95,8 @@ Font.prototype.write = function(text, to) {
  */
 Font.prototype.render = function(text) {
     // create an array of strings for each line
-    var output = [this.lineHeight];
+    var output = {};
+    output[0] = "";
     for (var i = 0; i < text.length; i++) {
         for(var j = 0; j<this.lineHeight; j++){
             output[j] += this.alphabet.get(text.charAt(i))+" ";
@@ -115,7 +116,7 @@ function createFontArray(string){
     let output = [input.length];
     for(let i = 0; i < input.length; i++){
         let splitted = input[i].split("=");
-        output[i] =new Char(splitted[0], splitted[1]);
+        output[i] =new SingleLineChar(splitted[0], splitted[1]);
     }
     return output;
 }
@@ -125,16 +126,6 @@ var alphabetString =
 "m=--;n=-.;o=---;p=.---.;q=--.-;r=.-.;s=...;t=-;u=..-;v=...-;w=.--;x=-..-;" +
 "y=-.-;z=--..; =//;.=.-.-.-;,=--..--;?=..--..;!=-.-.--";
 // create the morsefont
-let morseFont = new Font("MorseFont",createFontArray(alphabetString));
+let morseFont = new Font("MorseFont",createFontArray(alphabetString),1);
 // convert some text
-morseFont.write("hello","");
-// override the render function
-morseFont.render = function(text){
-    var output = "";
-    for (var i = 0; i < text.length; i++) {
-        output += this.alphabet.get(text.charAt(i));
-        output += "/";
-    }
-    return output;
-}
 morseFont.write("hello","");
