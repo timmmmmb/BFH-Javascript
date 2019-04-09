@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Quotes</h1>
+    <div id="Quotes"></div>
+    <h1>Errors</h1>
+    <div id="Errors"></div>
+    <script>
+        function getText() {
+            getQuote()
+                .then(toMorse)
+                .then(writeResult)
+                .catch(error => {
+                    writeError(error);
+                    getText();
+                });
+        }
+        function writeResult(r) {
+            document.getElementById("Quotes").innerHTML += r + "<br/>";
+        }
+        function writeError(e) {
+            document.getElementById("Errors").innerHTML += e + "<br/>";
+        }
+        for (i = 0; i < 4; i++) {
+            getText();
+        }
+
+    </script>
+</body>
+
+</html>
