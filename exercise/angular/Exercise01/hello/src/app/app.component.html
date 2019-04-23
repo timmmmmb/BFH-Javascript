@@ -1,0 +1,7 @@
+<h1>
+    {{title}}
+</h1>
+Name: <input [(ngModel)]="name">
+<button (click)="sayHello()" [disabled]="!name">Say Hello</button>
+<br>
+{{greeting}}
