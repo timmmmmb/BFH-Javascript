@@ -14,7 +14,7 @@ export class CatalogComponent {
   constructor() {
     this.books = BOOK_DATA;
     Book.prototype.toString = function toString() {
-      var ret = this.isbn+this.description+this.title+this.authors+this.publisher;
+      var ret = this.isbn+" "+this.description+" "+this.title+" "+this.authors+" "+this.publisher;
       return ret;
     }
   }
