@@ -1,5 +1,7 @@
 <!--Display the table if no book was selected-->
 <div *ngIf="!selectedBook">
+    <input name="keywords" [(ngModel)]="keywords">
+    <button (click)="searchBooks()">Search</button>
     <table class="table">
         <tr>
           <th>ISBN</th>
