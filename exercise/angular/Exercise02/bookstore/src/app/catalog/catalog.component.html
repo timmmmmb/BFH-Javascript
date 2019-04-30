@@ -1,13 +1,54 @@
-<table>
-  <tr>
-    <th>ISBN</th>
-    <th>Title</th> 
-    <th>Author</th>
-  </tr>
-  <tr *ngFor="let book of books">
-      <td>{{book.isbn}}</td>
-      <td>{{book.title}}</td>
-      <td>{{book.authors}}</td>
-  </tr>
-</table>
+<!--Display the table if no book was selected-->
+<div *ngIf="!selectedBook">
+    <table class="table">
+        <tr>
+          <th>ISBN</th>
+          <th>Title</th> 
+          <th>Author</th>
+        </tr>
+        <tr *ngFor="let book of books" (click)="selectBook(book)">
+            <td>{{book.isbn}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.authors}}</td>
+        </tr>
+      </table>
+</div>
+<div *ngIf="selectedBook" class='row'>
+    <div class="col-md-6">
+      <h2>{{selectedBook.title}}</h2>
+      <div>{{selectedBook.description}}</div>
+      <button (click)="selectedBook=null">Back</button>
+    </div> 
+    <div class="col-md-4">
+      <img [src]="selectedBook.imageUrl"> 
+      <table>
+          <tr>
+            <td>ISBN:</td>
+            <td>{{selectedBook.isbn}}</td>
+          </tr>
+          <tr>
+            <td>Authors:</td>
+            <td>{{selectedBook.authors}}</td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td>{{selectedBook.price}}</td>
+          </tr>
+          <tr>
+            <td>Publisher:</td>
+            <td>{{selectedBook.publisher}}</td>
+          </tr>
+          <tr>
+            <td>Publication Year:</td>
+            <td>{{selectedBook.publicationYear}}</td>
+          </tr>
+          <tr>
+            <td>number of pages:</td>
+            <td>{{selectedBook.numberOfPages}}</td>
+          </tr>
+        </table>
+    </div>
+</div>
+
+
 

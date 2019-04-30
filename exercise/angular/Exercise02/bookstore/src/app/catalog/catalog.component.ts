@@ -9,7 +9,12 @@ import { Book, BookBinding } from './book';
 })
 export class CatalogComponent {
   public books:Book[];
+  public selectedBook:Book;
   constructor() {
     this.books = BOOK_DATA;
+  }
+
+  public selectBook(book:Book){
+    this.selectedBook = book;
   }
 }
