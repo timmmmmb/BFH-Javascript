@@ -1,3 +1,13 @@
-<p>
-  catalog works!
-</p>
+<table>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th> 
+    <th>Author</th>
+  </tr>
+  <tr *ngFor="let book of books">
+      <td>{{book.isbn}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.authors}}</td>
+  </tr>
+</table>
+
