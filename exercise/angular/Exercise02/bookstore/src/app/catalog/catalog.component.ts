@@ -23,14 +23,11 @@ export class CatalogComponent {
     this.selectedBook = book;
   }
 
-  public searchBooks(){
-    this.books = [];
-    var i = 0;
-    for(let book of BOOK_DATA){
-      if(book.toString().toLowerCase().search(this.keywords.toLowerCase())!=-1){
-        this.books[i] = book;
-        i++;
-      }
-    }
+  public searchBooks(book:Book){
+    return book.toString().toLowerCase().search(this.keywords.toLowerCase())!=-1;
+  }
+
+  public filterBooks(){
+    this.books = BOOK_DATA.filter(book=>this.searchBooks(book));
   }
 }

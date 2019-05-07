@@ -1,0 +1,35 @@
+
+<div class="col-md-6">
+  <h2>{{book.title}}</h2>
+  <div>{{book.description}}</div>
+  <button class="btn btn-primary" (click)="back.emit()">Back</button>
+</div> 
+<div class="col-md-4">
+  <img [src]="book.imageUrl"> 
+  <table>
+      <tr>
+        <td>ISBN:</td>
+        <td>{{book.isbn}}</td>
+      </tr>
+      <tr>
+        <td>Authors:</td>
+        <td>{{book.authors}}</td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>{{book.price}}</td>
+      </tr>
+      <tr>
+        <td>Publisher:</td>
+        <td>{{book.publisher}}</td>
+      </tr>
+      <tr>
+        <td>Publication Year:</td>
+        <td>{{book.publicationYear}}</td>
+      </tr>
+      <tr>
+        <td>number of pages:</td>
+        <td>{{book.numberOfPages}}</td>
+      </tr>
+    </table>
+</div>

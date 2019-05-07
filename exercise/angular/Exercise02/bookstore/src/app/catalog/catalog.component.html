@@ -1,8 +1,13 @@
 <!--Display the table if no book was selected-->
-<div *ngIf="!selectedBook">
-    <input name="keywords" [(ngModel)]="keywords">
-    <button (click)="searchBooks()">Search</button>
-    <table class="table">
+<div class="row">
+  <div *ngIf="!selectedBook" class="col-md-10">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." name="keywords" [(ngModel)]="keywords">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="filterBooks()">Search!</button>
+      </span>
+    </div>
+    <table class="table" style="margin-top:25px;">
         <tr>
           <th>ISBN</th>
           <th>Title</th> 
@@ -14,43 +19,11 @@
             <td>{{book.authors}}</td>
         </tr>
       </table>
+  </div>
+  <book-details *ngIf="selectedBook" [book]="selectedBook" (back)="selectedBook=null"></book-details>
 </div>
-<div *ngIf="selectedBook" class='row'>
-    <div class="col-md-6">
-      <h2>{{selectedBook.title}}</h2>
-      <div>{{selectedBook.description}}</div>
-      <button (click)="selectedBook=null">Back</button>
-    </div> 
-    <div class="col-md-4">
-      <img [src]="selectedBook.imageUrl"> 
-      <table>
-          <tr>
-            <td>ISBN:</td>
-            <td>{{selectedBook.isbn}}</td>
-          </tr>
-          <tr>
-            <td>Authors:</td>
-            <td>{{selectedBook.authors}}</td>
-          </tr>
-          <tr>
-            <td>Price:</td>
-            <td>{{selectedBook.price}}</td>
-          </tr>
-          <tr>
-            <td>Publisher:</td>
-            <td>{{selectedBook.publisher}}</td>
-          </tr>
-          <tr>
-            <td>Publication Year:</td>
-            <td>{{selectedBook.publicationYear}}</td>
-          </tr>
-          <tr>
-            <td>number of pages:</td>
-            <td>{{selectedBook.numberOfPages}}</td>
-          </tr>
-        </table>
-    </div>
-</div>
+
+
 
 
 
