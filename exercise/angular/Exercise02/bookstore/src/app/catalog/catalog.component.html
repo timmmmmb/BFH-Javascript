@@ -1,12 +1,12 @@
 <!--Display the table if no book was selected-->
 <div class="row">
   <div *ngIf="!selectedBook" class="col-md-10">
-    <div class="input-group">
+    <form class="input-group" action="" (submit)="searchBooks()" autocomplete="off">
       <input type="text" class="form-control" placeholder="Search for..." name="keywords" [(ngModel)]="keywords">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="filterBooks()">Search!</button>
+        <button type="submit" class="btn btn-secondary" type="button" (click)="searchBooks()">Search!</button>
       </span>
-    </div>
+    </form>
     <table class="table" style="margin-top:25px;">
         <tr>
           <th>ISBN</th>
