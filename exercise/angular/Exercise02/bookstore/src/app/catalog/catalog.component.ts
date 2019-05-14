@@ -9,6 +9,7 @@ import {CatalogService} from '../catalog.service';
 })
 export class CatalogComponent {
   public books:Book[];
+  public loading:boolean;
   public selectedBook:Book;
   public keywords:string;
   constructor(private catalogService: CatalogService) {
@@ -20,11 +21,16 @@ export class CatalogComponent {
   }
 
   public searchBooks(){
+    this.books = [];
+    this.loading = true;
     this.catalogService.searchBooks(this.keywords)
-      .then(result => this.books = result)
+      .then(result => {
+        this.books = result;
+        this.loading = false;}
+      )
       .catch(error => {
-        this.books = [];
         console.log(error);
+        this.loading = false;
       })
   }
 }

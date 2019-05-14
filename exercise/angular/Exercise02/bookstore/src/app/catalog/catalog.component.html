@@ -7,7 +7,7 @@
         <button type="submit" class="btn btn-secondary" type="button" (click)="searchBooks()">Search!</button>
       </span>
     </form>
-    <table class="table" style="margin-top:25px;">
+    <table class="table" style="margin-top:25px;" *ngIf="books.length > 0">
         <tr>
           <th>ISBN</th>
           <th>Title</th> 
@@ -19,9 +19,15 @@
             <td>{{book.authors}}</td>
         </tr>
       </table>
+      <div *ngIf="loading" class="loading">
+          <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <h2>Loading</h2>
+      </div>
+      
   </div>
   <book-details *ngIf="selectedBook" [book]="selectedBook" (back)="selectedBook=null"></book-details>
 </div>
+
 
 
 

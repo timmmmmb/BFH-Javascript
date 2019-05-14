@@ -8,16 +8,16 @@ import { Book} from './catalog/book';
 
 @Injectable()
 export class CatalogService {
-    public searchBooks(keywords: string): Promise<Book[]> {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          var data:Book[] = BOOK_DATA.filter(book=> book.toString().toLowerCase().search(keywords.toLowerCase())!=-1);
-          if(data.length > 0){
-            resolve(data);
-          }else{
-            reject('No Result');
-          }
-        }, 1000);
-      });
-    }
+  public searchBooks(keywords: string): Promise<Book[]> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        var data:Book[] = BOOK_DATA.filter(book=> book.toString().toLowerCase().search(keywords.toLowerCase())!=-1);
+        if(data.length > 0){
+          resolve(data);
+        }else{
+          reject('No Result');
+        }
+      }, 5000);
+    });
+  }
 }
