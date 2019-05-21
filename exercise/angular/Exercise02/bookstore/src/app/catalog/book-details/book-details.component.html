@@ -1,6 +1,8 @@
 
 <div class="col-md-6">
-  <h2>{{book.title}}</h2>
+  <h2>{{book.title}} 
+    <button  class="btn btn-primary" (click)="orderBook()">Order</button>
+  </h2>
   <div>{{book.description}}</div>
   <button class="btn btn-primary" (click)="back.emit()">Back</button>
 </div> 

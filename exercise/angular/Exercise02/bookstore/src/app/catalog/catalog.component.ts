@@ -33,4 +33,6 @@ export class CatalogComponent {
         this.loading = false;
       })
   }
+
+ 
 }

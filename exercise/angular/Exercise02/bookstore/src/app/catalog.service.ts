@@ -11,13 +11,18 @@ export class CatalogService {
   public searchBooks(keywords: string): Promise<Book[]> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        var data:Book[] = BOOK_DATA.filter(book=> book.toString().toLowerCase().search(keywords.toLowerCase())!=-1);
-        if(data.length > 0){
-          resolve(data);
-        }else{
-          reject('No Result');
+        if(keywords != undefined){
+          var data:Book[] = BOOK_DATA.filter(book=> book.toString().toLowerCase().search(keywords.toLowerCase())!=-1);
+          if(data.length > 0){
+            resolve(data);
+          } else{
+            reject('No Result');
+          }
+        } else{
+          resolve(BOOK_DATA);
         }
-      }, 5000);
+        
+      }, 500);
     });
   }
 }
