@@ -1,3 +1,42 @@
-<p>
-  customer-details works!
-</p>
+<h1>Customer Details</h1>
+<form (ngSubmit)="saveCustomer()" #customerForm="ngForm">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" #email="ngModel" name="email" id="email" type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="customer.email" required>
+    <div *ngIf="email.errors && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+          required value
+      </div>
+      <div *ngIf="email.errors.pattern">
+          invalid email address
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input name="firstname" id="firstname" type="firstname" class="form-control" id="firstname" placeholder="Enter Firstname" [(ngModel)]="customer.firstName" required>
+  </div>
+  <div class="form-group">
+    <label for="lastname">Lastname</label>
+    <input name="lastname" id="lastname" type="lastname" class="form-control" id="lastname" placeholder="Enter Lastname" [(ngModel)]="customer.lastName" required>
+  </div>
+  <div class="form-group">
+    <label for="creditCard">Credit Card</label>
+    <select class="form-control" id="type" name="type" [(ngModel)]="customer.creditCard.type" required>
+      <option *ngFor="let type of creditCardTypes" [value]="type">{{type}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="number">Number</label>
+    <input name="number" id="number" type="number" class="form-control" id="number" placeholder="Enter Number" [(ngModel)]="customer.creditCard.number" required>
+  </div>
+  <div class="form-group">
+    <label for="expirationYear">Expiration Year</label>
+    <input name="expirationYear" id="expirationYear" type="expirationYear" class="form-control" id="expirationYear" placeholder="Enter expiration year" [(ngModel)]="customer.creditCard.expirationYear" required>
+  </div>
+  <div class="form-group">
+    <label for="expirationMonth">Expiration Month</label>
+    <input name="expirationMonth" id="expirationMonth" type="expirationMonth" class="form-control" id="expirationMonth" placeholder="Enter Expiration Month" [(ngModel)]="customer.creditCard.expirationMonth" required>
+  </div>
+  <button [disabled]="!customerForm.form.valid" type="submit" class="btn btn-primary">Save</button>
+</form>
