@@ -9,6 +9,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { BookDetailsComponent } from './catalog/book-details/book-details.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

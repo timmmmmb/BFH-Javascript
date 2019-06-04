@@ -12,11 +12,13 @@
           <th>ISBN</th>
           <th>Title</th> 
           <th>Author</th>
+          <th>Preis</th>
         </tr>
         <tr *ngFor="let book of books" (click)="selectBook(book)">
             <td>{{book.isbn}}</td>
             <td>{{book.title}}</td>
             <td>{{book.authors}}</td>
+            <td>{{book.price}}</td>
         </tr>
       </table>
       <div *ngIf="loading" class="loading">
