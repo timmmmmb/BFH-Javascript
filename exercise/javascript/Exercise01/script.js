@@ -3,7 +3,8 @@ var alphabetString =
 "m=--;n=-.;o=---;p=.---.;q=--.-;r=.-.;s=...;t=-;u=..-;v=...-;w=.--;x=-..-;" +
 "y=-.-;z=--..; =//;.=.-.-.-;,=--..--;?=..--..;!=-.-.--";
 
-console.log(convertFromMorse(".. // .- --. .-. . . // -.. ..- -.. ."));
+//console.log(convertFromMorse(".. // .- --. .-. . . // -.. ..- -.. ."));
+console.log(convertToMorse("hello wie geht es"));
 
 /**
  * replaces all occurences of the search string with the replacment string in the input 
@@ -20,7 +21,7 @@ function replaceAll(string, search, replacement) {
  * @param {*} input one character that should get converted to morse
  */
 function charToMorseCode(input){
-    var output = alphabetString.match(input+"=[.-/]*");
+    var output = alphabetString.match(input+"=[-./]*");
     output = output[0].substring(2);
     return output;
 }
