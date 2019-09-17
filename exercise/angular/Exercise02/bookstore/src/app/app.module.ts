@@ -10,11 +10,13 @@ import { BookDetailsComponent } from './catalog/book-details/book-details.compon
 import { HomeComponent } from './home/home.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersummaryComponent } from './ordersummary/ordersummary.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'customer-details', component: CustomerDetailsComponent },
+  { path: 'ordersummary', component: OrdersummaryComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -24,7 +26,8 @@ const routes: Routes = [
     CatalogComponent,
     BookDetailsComponent,
     HomeComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    OrdersummaryComponent
   ],
   imports: [
     RouterModule,

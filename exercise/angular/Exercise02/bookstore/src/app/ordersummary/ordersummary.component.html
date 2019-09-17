@@ -1,0 +1,10 @@
+<p *ngIf="book!=undefined">
+  Book infos:
+  {{book.isbn}}
+</p>
+<p *ngIf="customer!=undefined">
+  Client infos:
+  {{customer.firstName}}
+</p>
+
+<button type="submit" class="btn btn-primary" (click)="orderService.orderBook()">Submit</button>
